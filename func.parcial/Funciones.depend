@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1524257154 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\funciones\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1524257162 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\funciones\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1524256337 c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\funciones\funciones.h
+
+1524257162 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1524257691 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1524256337 c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\funciones.h
+
