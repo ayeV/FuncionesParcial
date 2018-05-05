@@ -6,6 +6,134 @@
 #define CANT 5
 #define COL 5
 #define FILAS 5
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
+{
+    int indice = 0;
+    printf("%s",message);
+    scanf("%d",input);
+
+    while( *input < lowLimit || *input >hiLimit)
+    {
+        printf("%s", eMessage);
+        scanf("%d",input);
+    }
+
+    if(*input >lowLimit || *input <hiLimit){
+        return indice;
+    }
+    else{
+        indice = -1;
+        return indice;
+    }
+
+
+
+}
+
+
+int getFloat(float* input,char message[],char eMessage[], float lowLimit, float hiLimit)
+{
+    int indice=0;
+
+    printf("%s",message);
+    scanf("%f",input);
+
+    while( *input < lowLimit || *input >hiLimit)
+    {
+        printf("%s", eMessage);
+        scanf("%f",input);
+    }
+    if(*input >lowLimit || *input <hiLimit){
+        return indice;
+    }
+    else{
+        indice = -1;
+        return indice;
+    }
+
+
+
+}
+
+
+
+int getChar(char* input,char message[],char eMessage[], char lowLimit, char hiLimit)
+{
+    int indice=0;
+
+     printf("%s",message);
+     fflush(stdin);
+    scanf("%c",input);
+
+    while( *input != lowLimit && *input != hiLimit)
+    {
+        printf("%s", eMessage);
+        fflush(stdin);
+        scanf("%c",input);
+    }
+
+   if(*input == lowLimit || *input == hiLimit){
+        return indice;
+    }
+    else{
+        indice = -1;
+        return indice;
+    }
+
+}
+
+
+
+int getString(char* input,char message[],char eMessage[], int lowLimit, int hiLimit)
+{
+    int indice = 0;
+
+    printf("%s",message);
+    fflush(stdin);
+    scanf("%[^\n]",input);
+
+    while( strlen(input) < lowLimit || strlen(input) >hiLimit)
+    {
+        printf("%s", eMessage);
+        fflush(stdin);
+        scanf("%[^\n]",input);
+    }
+    if(*input >lowLimit || *input <hiLimit){
+        return indice;
+    }
+    else{
+        indice = -1;
+        return indice;
+    }
+
+
+
+}
+int validarCadena(char cadena[])
+{
+    int i;
+
+    for(i=0; i<strlen(cadena); i++)
+    {
+        if(!(isalpha(cadena[i])))
+        {
+            printf("Ingrese solo letras\n");
+            getch();
+            return 0;
+
+        }
+    }
+    return 1;
+}
+
+
+
 void cargarVector(int vec[]){
     int i;
 
@@ -170,6 +298,7 @@ int buscarLibre(eEmpleado vec[], int tam)
 
 void altaEmpleado(eEmpleado vec[], int tam)
 {
+    int r;
     eEmpleado nuevoEmpleado;
     int esta;
     int legajo;
@@ -185,40 +314,38 @@ void altaEmpleado(eEmpleado vec[], int tam)
     }
     else
     {
-        printf("Legajo: ");
-        scanf("%d",&legajo);
+        r = getInt(&legajo,"Ingrese legajo: ","Legajo debe ser mayor a 0: ",0,9999999);
 
         esta = buscarEmpleado(vec,tam,legajo);
         if(esta != -1 )
-        {
+        {   if(r==0){
             printf("\nEl legajo %d ya esta dado de alta\n", legajo);
             mostrarEmpleado(vec[esta]);
+            }
         }
         else
         {
             nuevoEmpleado.isEmpty = 0;
             nuevoEmpleado.legajo =legajo;
-            printf("Nombre: ");
-            fflush(stdin);
-            scanf("%[^\n]",nuevoEmpleado.nombre);
+            r = getString(nuevoEmpleado.nombre,"Nombre: ","Rango valido [2-50]",2,50);
+
             printf("\n\nFecha de Ingreso");
-            printf("\nDia: ");
-            scanf("%d", &nuevoEmpleado.fechaIngreso.dia);
+            r = getInt(&nuevoEmpleado.fechaIngreso.dia,"\nDia: ","Rango valido [1-31]",1,31);
 
-            printf("\nMes: ");
-            scanf("%d", &nuevoEmpleado.fechaIngreso.mes);
 
-            printf("\nAño: ");
-            scanf("%d", &nuevoEmpleado.fechaIngreso.anio);
+             r = getInt(&nuevoEmpleado.fechaIngreso.mes,"\nMes: ","Rango valido [1-12]",1,12);
 
-            printf("Sexo: ");
-            fflush(stdin);
-            scanf("%c",&nuevoEmpleado.sexo);
-            printf("Sueldo: ");
-            scanf("%f",&nuevoEmpleado.sueldo);
+
+
+             r = getInt(&nuevoEmpleado.fechaIngreso.anio,"\nAnio: ","Rango valido [1910-2018]",1910,2018);
+
+
+             r = getChar(&nuevoEmpleado.sexo,"\nSexo: ","Ingrese f o m: ",'f','m');
+            r = getFloat(&nuevoEmpleado.sueldo, "\nSueldo: ","Rango valido [1.00-1000000]",1,1000000);
+
             vec[indice] = nuevoEmpleado;
-            printf("Sector: ");
-            scanf("%d",&nuevoEmpleado.idSector);
+            r= getInt(&nuevoEmpleado.idSector,"Sector: ","Rango valido [1-4]",1,4);
+
              vec[indice] = nuevoEmpleado;
             printf("Alta exitosa\n");
         }
@@ -259,11 +386,7 @@ void hardCode(eSector sectores[])
 }
 
 
-
-
-
-
-
+//lista de todos los empleados
 void mostrarEmpleados(eEmpleado vec[], int tam, eSector sec[])
 {
     int i,j;
@@ -274,18 +397,33 @@ void mostrarEmpleados(eEmpleado vec[], int tam, eSector sec[])
         {
             if(vec[i].idSector == sec[j].id)
             {
+                if(vec[i].isEmpty == 0){
                 printf("%d\t%s\t%d/%d/%d\t%.2f\t%c\t%s\n", vec[i].legajo,vec[i].nombre,vec[i].fechaIngreso.dia,vec[i].fechaIngreso.mes,vec[i].fechaIngreso.anio,vec[i].sueldo,vec[i].sexo,sec[j].descripcion);
-               /* printf("%s\t",vec[i].nombre);
-                printf("%d/%d/%d\t", vec[i].fechaIngreso.dia,vec[i].fechaIngreso.mes,vec[i].fechaIngreso.anio);
-                printf("%.2f\t",vec[i].sueldo);
-                printf("%c\t",vec[i].sexo);
-                printf("%s",sec[j].descripcion);*/
+            }
             }
 
         }
     }
 }
+//Lista de los sectores por empleado
+void listarEmpPorSector(eEmpleado emp[],int tam, eSector sec[]){
+    int i,j;
+    for(i=0;i<5;i++){
+        for(j=0;j<tam;j++){
+            if(sec[i].id == emp[j].idSector){
+                if(emp[i].isEmpty == 0){
+                    printf("%d\t%s\t%d/%d/%d\t%.2f\t%c\t%s\n", emp[j].legajo,emp[j].nombre,emp[j].fechaIngreso.dia,emp[j].fechaIngreso.mes,emp[j].fechaIngreso.anio,emp[j].sueldo,emp[j].sexo,sec[i].descripcion);
 
+                        }
+
+                }
+
+        }
+    }
+
+
+
+}
 
 void mostrarEmpleado(eEmpleado emp)
 {
@@ -300,7 +438,7 @@ int buscarEmpleado(eEmpleado vec[],int tam, int legajo)
     int indice = -1;
     for(i=0; i<tam; i++)
     {
-        if(legajo == vec[i].legajo)
+        if(vec[i].isEmpty == 0 && vec[i].legajo == legajo)
         {
             indice = i;
             break;
@@ -312,14 +450,14 @@ int buscarEmpleado(eEmpleado vec[],int tam, int legajo)
 
 void baja(eEmpleado vec[], int tam)
 {
+
     int legajo;
     char opc;
     int esta;
 
     system("cls");
+    getInt(&legajo,"Ingrese legajo: ","Legajo debe ser mayor a 0: ",0,9999999);
 
-    printf("Legajo: ");
-    scanf("%d", &legajo);
     esta = buscarEmpleado(vec, tam, legajo);
     if(esta == -1)
     {
@@ -360,8 +498,7 @@ void modificaEmpleado(eEmpleado vec[], int tam)
     system("cls");
     printf("---Modifica Empleado---\n\n");
 
-    printf("Ingrese legajo: ");
-    scanf("%d", &legajo);
+     getInt(&legajo,"Ingrese legajo: ","Legajo debe ser mayor a 0: ",0,9999999);
 
     esta = buscarEmpleado(vec, tam, legajo);
 
@@ -392,15 +529,17 @@ void modificaEmpleado(eEmpleado vec[], int tam)
                 switch(menuModifica())
                 {
                 case 1:
-                    printf("Ingrese nuevo legajo: ");
-                    scanf("%d",&empleadoModificado.legajo);
+                    getInt(&empleadoModificado.legajo,"Ingrese nuevo legajo: ","Legajo debe ser mayor a 0: ",0,9999999);
+                   /* printf("Ingrese nuevo legajo: ");
+                    scanf("%d",&empleadoModificado.legajo);*/
                     vec[esta].legajo = empleadoModificado.legajo;
 
                     break;
                 case 2:
-                    printf("Ingrese nuevo nombre: ");
+                    getString(empleadoModificado.nombre,"Nuevo nombre: ","Rango valido [2-50]",2,50);
+                   /* printf("Ingrese nuevo nombre: ");
                     fflush(stdin);
-                    scanf("%[^\n]",empleadoModificado.nombre);
+                    scanf("%[^\n]",empleadoModificado.nombre);*/
                     strcpy(vec[esta].nombre, empleadoModificado.nombre);
 
                     break;
@@ -471,7 +610,7 @@ int menuModifica()
     return opcion;
 }
 
-//ordenado en forma descendente
+//ordenado en forma descendente segun sueldo
 void ordenarEmpleados(eEmpleado vec[],int tam)
 {
     int i,j;
@@ -502,5 +641,138 @@ void mostrarPersonas(eEmpleado persona[],int cantidad){
 
 
 }
+
+
+void graficar(int parametro1, int parametro2, int parametro3){
+    int i;
+    int max;
+    int flag = 0;
+
+
+
+
+    if(parametro1 >= parametro2 && parametro1 >= parametro3)
+    {
+        max = parametro1;
+    }
+    else{
+        if(parametro2>= parametro1 && parametro2 >= parametro3)
+        {
+            max = parametro2;
+        }
+        else{
+            max = parametro3;
+        }
+    }
+
+
+
+
+        for(i=max;i>0;i--){
+            if(i<= parametro1){
+                    printf("*");
+
+            }
+
+            if(i<= parametro2){
+                    flag = 1;
+                printf("\t*");
+            }
+
+            if(i<= parametro3){
+                if(flag == 0)
+                    printf("\t\t*");
+                if(flag == 1)
+                    printf("\t*");
+            }
+            printf("\n");
+        }
+
+
+    printf("<18\t19-35\t>35");
+
+}
+
+int esNumeroInt(char msj[], char eMsj[]){
+     int i, flag, cant;
+     char cadena[10];
+     int nro;
+
+     int contador=0;
+
+
+    do{
+        if(contador >=1){
+            printf("%s",eMsj);
+            fflush(stdin);
+            scanf("%s",cadena);
+        }
+        else if(contador == 0){
+            printf("%s",msj);
+            fflush(stdin);
+            scanf("%s",cadena);
+        }
+
+
+        flag = 0;
+        cant = strlen(cadena);
+
+    for(i=0; i<cant; i++){
+        if(!isdigit(cadena[i])){
+            flag = 1;
+
+            break;
+        }
+    }
+    contador++;
+    }while(flag == 1);
+    if(flag == 0){
+        nro = atoi(cadena);
+    }
+    return nro;
+}
+
+
+
+float esNumFloat(char msj[],char eMsj[]){
+    int i, flag, cant;
+     char cadena[10];
+     float nro;
+
+     int contador=0;
+
+
+    do{
+        if(contador >=1){
+            printf("%s",eMsj);
+            fflush(stdin);
+            scanf("%s",cadena);
+        }
+        else if(contador == 0){
+            printf("%s",msj);
+            fflush(stdin);
+            scanf("%s",cadena);
+        }
+        flag = 0;
+        cant = strlen(cadena);
+
+    for(i=0; i<cant; i++){
+        if(!isdigit(cadena[i]) && cadena[i] != '.' ){
+            flag = 1;
+
+            break;
+        }
+    }
+    contador++;
+    }while(flag == 1);
+    if(flag == 0){
+        nro = atof(cadena);
+    }
+    return nro;
+
+
+}
+
+
 
 

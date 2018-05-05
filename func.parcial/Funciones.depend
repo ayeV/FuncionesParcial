@@ -25,10 +25,22 @@
 
 1524332214 c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\funciones.h
 
-1524332282 source:c:\users\ayele\desktop\func.parcial\main.c
+1525295299 source:c:\users\ayele\desktop\func.parcial\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
+	<ctype.h>
 	"funciones.h"
 
-1525193714 c:\users\ayele\desktop\func.parcial\funciones.h
+1525378884 c:\users\ayele\desktop\func.parcial\funciones.h
+
+1525378793 source:c:\users\ayele\desktop\func.parcial\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 
