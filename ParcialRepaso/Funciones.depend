@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1524257154 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\funciones\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1524257162 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\funciones\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1524256337 c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\funciones\funciones.h
+
+1524332269 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1524332200 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1524332214 c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\funciones.h
+
+1525295299 source:c:\users\ayele\desktop\func.parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1525378884 c:\users\ayele\desktop\func.parcial\funciones.h
+
+1525378793 source:c:\users\ayele\desktop\func.parcial\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1525729276 source:c:\users\ayele\desktop\parcialrepaso\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1525729258 c:\users\ayele\desktop\parcialrepaso\funciones.h
+
+1525726790 source:c:\users\ayele\desktop\parcialrepaso\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
