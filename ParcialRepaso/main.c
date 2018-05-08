@@ -17,10 +17,7 @@ int main()
 
     inicializarUsers(users, CANT_USUARIOS);
     inicializarProductos(productos,CANT_PROD);
-   /*  hardCode(sectores);
-     for(i=0; i<5; i++){
-        printf("%d - %s - %d\n", sectores[i].id, sectores[i].descripcion, sectores[i].isEmpty);
-    }*/
+
     //system("pause");
     do
     {
@@ -50,24 +47,32 @@ int main()
         case 5:
             printf("Modificar publicacion\n");
             modificaPublicacion(productos,CANT_PROD,users,CANT_USUARIOS);
+
             system("pause");
             break;
             case 6:
                 printf("Cancelar publicacion\n");
+                cancelarPublic(users,CANT_USUARIOS,productos,CANT_PROD);
+                system("pause");
                 break;
             case 7:
                 printf("Comprar producto\n");
+                comprar(users,CANT_USUARIOS,productos,CANT_PROD);
+                system("pause");
                 break;
             case 8:
                 printf("Listar publicaciones del usuario\n");
-                mostrarUsuarioYProductos(users,productos,CANT_USUARIOS,CANT_PROD);
+                mostrarUsuarioDeterminadoYProductos(users,productos,CANT_USUARIOS,CANT_PROD);
                 system("pause");
                 break;
             case 9:
                 printf("Listar publicaciones\n");
+                listarProd(productos,CANT_PROD,users,CANT_USUARIOS);
                 break;
             case 10:
                 printf("Listar usuarios\n");
+                mostrarUsuarios(users,CANT_USUARIOS);
+                system("pause");
                 break;
         case 11:
 

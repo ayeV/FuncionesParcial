@@ -3,13 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "funciones.h"
-#define CANT 5
-#define COL 5
-#define FILAS 5
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 
 int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
@@ -134,24 +128,7 @@ int validarCadena(char cadena[])
 
 
 
-void cargarVector(int vec[]){
-    int i;
 
-    for(i=0;i<CANT;i++){
-        printf("Ingrese valor a cargar en el vector: ");
-        scanf("%d", &vec[i]);
-    }
-
-
-}
-void mostrarVector(int vec[]){
-    int i;
-    for(i=0;i<CANT;i++){
-        printf("%d", vec[i]);
-    }
-
-
-}
 
 
 
@@ -324,8 +301,7 @@ void altaUser(eUsuario user[], int tam)
 
 
             user[indice] = nuevoUser;
-          //  user[indice].idUsuario = esta;
-           //  user[indice] = nuevoUser;
+
             printf("Alta exitosa\n");
         }
     }
@@ -334,6 +310,24 @@ void mostrarProd(eProducto prod){
 
     printf("Nombre\t\tID\t\tPrecio\tStock\n");
     printf("%s\t\t%d\t\t%.2f\t%d",prod.nombre,prod.id,prod.precio,prod.stock);
+
+
+}
+
+void listarProd(eProducto prod[],int tamProd, eUsuario users[], int tamUser){
+    int i,j;
+
+    for(i=0;i<tamProd;i++){
+        for(j=0;j<tamUser;j++){
+            if(prod[i].idUsuario == users[j].idUsuario && prod[i].isEmpty == 0 && users[j].isEmpty == 0){
+                 printf("Nombre\t\tID\t\tPrecio\tStock\tUsuario\n");
+                printf("%s\t\t%d\t\t%.2f\t%d\t%s\n",prod[i].nombre,prod[i].id,prod[i].precio,prod[i].stock,users[j].nombre);
+            }
+        }
+    }
+
+
+
 
 
 }
@@ -384,12 +378,8 @@ void publicarProducto(eProducto producto[],int tamProd, eUsuario user[],int tamU
                 r = getFloat(&nuevoProducto.precio,"Precio: ","Rango valido [0-10000]",0,10000);
                 r = getInt(&nuevoProducto.stock, "Stock: ","Rango valido [1-100]",0,100);
 
-
-
-
                 producto[indice2] = nuevoProducto;
-               // producto[indice2].id = esta2;
-              //  producto[indice2] = nuevoProducto;
+
                 printf("Publicacion exitosa\n");
             }
     }
@@ -469,12 +459,12 @@ void mostrarUsuarioYProductos(eUsuario user[],eProducto prod[], int tamUser, int
     system("cls");
     for(i=0; i<tamUser; i++)
     {
+
         for(j=0; j<tamProd; j++)
         {
             if(user[i].isEmpty == 0 && user[i].idUsuario == prod[j].idUsuario && prod[j].isEmpty == 0)
             {
-                 printf("Publicaciones del usuario %s\n",user[i].nombre);
-
+                printf("Publicaciones del usuario %s\n",user[i].nombre);
                 printf("ID Prod\t\tNombre\t\tPrecio\t\tStock\n");
                 printf("%d\t\t%s\t\t%.2f\t\t%d\n",prod[j].id,prod[j].nombre,prod[j].precio,prod[j].stock);
             }
@@ -484,6 +474,42 @@ void mostrarUsuarioYProductos(eUsuario user[],eProducto prod[], int tamUser, int
 
 
 }
+void mostrarUsuarioDeterminadoYProductos(eUsuario user[],eProducto prod[], int tamUser, int tamProd)
+{
+    int i,j;
+    int idUser;
+    int esta;
+
+    getInt(&idUser,"Ingrese ID: ","ID debe ser mayor a 0: ",0,9999999);
+
+    esta = buscarUsuario(user, tamUser, idUser);
+
+    if(esta == -1)
+    {
+        printf("\nEl ID %d no se encuentra en el sistema\n\n", idUser);
+
+    }
+    else
+    {
+    system("cls");
+    for(i=0; i<tamUser; i++)
+    {
+
+        for(j=0; j<tamProd; j++)
+        {
+            if(user[i].isEmpty == 0 && user[i].idUsuario == prod[j].idUsuario && prod[j].isEmpty == 0)
+            {
+                printf("Publicaciones del usuario %s\n",user[i].nombre);
+                printf("ID Prod\t\tNombre\t\tPrecio\t\tStock\n");
+                printf("%d\t\t%s\t\t%.2f\t\t%d\n",prod[j].id,prod[j].nombre,prod[j].precio,prod[j].stock);
+            }
+        }
+    }
+    }
+
+
+}
+
 
 
 
@@ -558,6 +584,61 @@ void bajaUsuario(eUsuario user[], int tam)
     }
 
 }
+
+
+
+void cancelarPublic(eUsuario user[], int tamUser, eProducto prod[], int tamProd)
+{
+
+    int idUser;
+    int idProd;
+    char opc;
+    int esta1;
+    int esta2;
+
+    system("cls");
+    getInt(&idUser,"Ingrese ID: ","ID debe ser mayor a 0: ",0,9999999);
+
+    esta1 = buscarUsuario(user, tamUser, idUser);
+    if(esta1 == -1)
+    {
+        printf("ID de usuario inexistente");
+    }
+    else
+    {
+         mostrarUsuarioYProductos(user,prod,tamUser,tamProd);
+        getInt(&idProd, "Ingrese ID del prod: ","ID debe ser mayor a 0",0,9999999);
+
+        esta2 = buscarProd(prod, tamProd,idProd);
+        if(esta2 != -1 ){
+                mostrarProd(prod[esta2]);
+
+
+        do
+        {
+            printf("Confirma la baja? S/N\n");
+            fflush(stdin);
+            scanf("%c", &opc);
+            opc = tolower(opc);
+        }
+        while(opc != 's' && opc != 'n');
+        if(opc == 's')
+        {
+            prod[esta2].isEmpty = 1;
+            printf("Baja exitosa\n");
+        }
+        else
+        {
+            printf("Se ha cancelado la baja\n");
+
+        }
+    }
+    else{
+        printf("ID de prod inexistente\n");
+    }
+    }
+
+}
 void modificaUsuario(eUsuario user[], int tam)
 {
     int id;
@@ -601,18 +682,11 @@ void modificaUsuario(eUsuario user[], int tam)
                 {
                 case 1:
                     getString(usuarioModificado.password,"Nuevo password: ","Rango valido [2-10]",2,10);
-
-
                     strcpy(user[esta].password, usuarioModificado.password);
-
-
-
                     break;
                 case 2:
                     getString(usuarioModificado.nombre,"Nuevo nombre: ","Rango valido [2-50]",2,50);
-
                     strcpy(user[esta].nombre, usuarioModificado.nombre);
-
                     break;
 
 
@@ -671,7 +745,7 @@ void modificaPublicacion(eProducto prod[], int tamProd, eUsuario user[],int tamU
     int esta2;
     char confirma;
     int salir = 0;
-   // int indice;
+
 
     system("cls");
     printf("---Modificar publicacion---\n\n");
@@ -709,13 +783,8 @@ void modificaPublicacion(eProducto prod[], int tamProd, eUsuario user[],int tamU
                 switch(menuModificaPublicacion())
                 {
                 case 1:
-                    getString(&prodModificado.precio,"Nuevo precio: ","Rango valido [1-100000]",1,100000);
-
-
+                    getFloat(&prodModificado.precio,"Nuevo precio: ","Rango valido [1-100000]",1,100000);
                     prod[esta2].precio  = prodModificado.precio;
-
-
-
                     break;
                 case 2:
                     getInt(&prodModificado.stock,"Nuevo stock: ","Rango valido [1-1000]",1,1000);
@@ -725,7 +794,7 @@ void modificaPublicacion(eProducto prod[], int tamProd, eUsuario user[],int tamU
                     salir = 1;
                     break;
                 default:
-                    printf("Ingrese una opcion correcta [1-6]");
+                    printf("Ingrese una opcion correcta [1-3]");
                     break;
                 }
             }
@@ -743,8 +812,68 @@ void modificaPublicacion(eProducto prod[], int tamProd, eUsuario user[],int tamU
     }
 }
 
+void comprar(eUsuario user[],int tamUser, eProducto prod[],int tamProd){
+    int idUser;
+    int idProd;
+
+    int esta1;
+    int esta2;
+    char confirma;
 
 
+    system("cls");
+
+
+     getInt(&idUser,"Ingrese ID de usuario: ","ID debe ser mayor a 0: ",0,9999999);
+
+    esta1 = buscarUsuario(user, tamUser, idUser);
+
+    if(esta1 == -1)
+    {
+        printf("\nEl ID %d no se encuentra en el sistema\n\n", idUser);
+
+    }
+    else
+    {
+        mostrarUsuarioYProductos(user,prod,tamUser,tamProd);
+        getInt(&idProd, "Ingrese ID del prod a comprar: ","ID debe ser mayor a 0",0,9999999);
+
+        esta2 = buscarProd(prod, tamProd,idProd);
+        if(esta2 != -1 )
+        {
+            mostrarProd(prod[esta2]);
+            if(prod[esta2].stock != 0)
+            {
+                do
+                {
+                    printf("\nConfirma la compra? [s|n]: ");
+                    fflush(stdin);
+                    scanf("%c", &confirma);
+                    confirma = tolower(confirma);
+                }
+                while(confirma != 's' && confirma != 'n');
+
+                if(confirma == 's')
+                {
+
+                    printf("Compra realizada\n");
+                    getInt(&user[esta1].calificacion,"Califique al usuario: ","Rango valido [0-10]",0,10);
+                }
+                else
+                {
+                    printf("Compra cancelada\n");
+                }
+            }
+            else
+            {
+                printf("No hay stock del prod solicitado\n");
+            }
+        }
+        else{
+            printf("Producto inexistente\n");
+        }
+    }
+}
 
 /*void mostrarPersonas(eEmpleado persona[],int cantidad){
     int i;

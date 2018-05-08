@@ -44,22 +44,19 @@
 	<stdlib.h>
 	<string.h>
 
-1525729276 source:c:\users\ayele\desktop\parcialrepaso\main.c
+1525813919 source:c:\users\ayele\desktop\parcialrepaso\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"funciones.h"
 
-1525729258 c:\users\ayele\desktop\parcialrepaso\funciones.h
+1525813896 c:\users\ayele\desktop\parcialrepaso\funciones.h
 
-1525726790 source:c:\users\ayele\desktop\parcialrepaso\funciones.c
+1525813165 source:c:\users\ayele\desktop\parcialrepaso\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"funciones.h"
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
 

@@ -13,6 +13,7 @@ typedef struct{
 typedef struct
 {
     int idUsuario;
+    int calificacion;
     char nombre[51];
     char password[11];
     int isEmpty;
@@ -100,6 +101,11 @@ void mostrarUsuarioYProductos(eUsuario users[],eProducto productos[], int tamUse
 
 
 int menuModificarUsuario();
+void modificaPublicacion(eProducto prod[], int tamProd, eUsuario user[],int tamUser);
+void comprar(eUsuario user[],int tamUser, eProducto prod[],int tamProd);
+void listarProd(eProducto prod[],int tamProd, eUsuario users[], int tamUser);
+void mostrarUsuarioDeterminadoYProductos(eUsuario user[],eProducto prod[], int tamUser, int tamProd);
+void cancelarPublic(eUsuario user[], int tamUser, eProducto prod[], int tamProd);
 
 /**
 * \brief Solicita un número al usuario y lo valida
