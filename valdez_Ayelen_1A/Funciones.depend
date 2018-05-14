@@ -1,0 +1,197 @@
+# depslib dependency file v1.0
+1524257154 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\funciones\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1524257162 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\funciones\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1524256337 c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\funciones\funciones.h
+
+1524332269 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1524332200 source:c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1524332214 c:\users\ayelen valdez\desktop\ejercicios guia de programacion1\func.parcial\funciones.h
+
+1525295299 source:c:\users\ayele\desktop\func.parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1525378884 c:\users\ayele\desktop\func.parcial\funciones.h
+
+1525378793 source:c:\users\ayele\desktop\func.parcial\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1525813919 source:c:\users\ayele\desktop\parcialrepaso\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1525813896 c:\users\ayele\desktop\parcialrepaso\funciones.h
+
+1525813165 source:c:\users\ayele\desktop\parcialrepaso\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1525877388 source:c:\users\alumno\desktop\parcialrepaso\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1525876727 c:\users\alumno\desktop\parcialrepaso\funciones.h
+
+1525876987 source:c:\users\alumno\desktop\parcialrepaso\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1526062878 source:c:\users\alumno\desktop\valdezayelen1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1526134795 c:\users\alumno\desktop\valdezayelen1a\funciones.h
+
+1526162998 source:c:\users\ayele\desktop\valdezayelen1a\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1526251299 c:\users\ayele\desktop\valdezayelen1a\funciones.h
+
+1526062878 source:c:\users\ayele\desktop\valdezayelen1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1526134780 source:c:\users\alumno\desktop\valdezayelen1a\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+
+1526251951 source:c:\users\ayele\desktop\valdez_ayelen1a\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	"input.h"
+
+1526253701 c:\users\ayele\desktop\valdez_ayelen1a\funciones.h
+
+1526253455 c:\users\ayele\desktop\valdez_ayelen1a\input.h
+
+1526251955 source:c:\users\ayele\desktop\valdez_ayelen1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	"input.h"
+
+1525902850 source:c:\users\ayele\desktop\valdez_ayelen1a\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1526254136 source:c:\users\ayele\desktop\parcial\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"input.h"
+
+1526253707 source:c:\users\ayele\desktop\parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	"input.h"
+
+1526254600 c:\users\ayele\desktop\parcial\funciones.h
+	"input.h"
+	"funciones.h"
+
+1526256176 c:\users\ayele\desktop\parcial\input.h
+	"funciones.h"
+	"input.h"
+
+1526254563 source:c:\users\ayele\desktop\parcial\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	"input.h"
+
+1526256585 source:c:\users\ayele\desktop\valdez_ayelen_1a\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	"input.h"
+
+1526256473 c:\users\ayele\desktop\valdez_ayelen_1a\funciones.h
+	"input.h"
+	"funciones.h"
+
+1526256176 c:\users\ayele\desktop\valdez_ayelen_1a\input.h
+	"funciones.h"
+	"input.h"
+
+1526256487 source:c:\users\ayele\desktop\valdez_ayelen_1a\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"input.h"
+
+1526256480 source:c:\users\ayele\desktop\valdez_ayelen_1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	"input.h"
+
