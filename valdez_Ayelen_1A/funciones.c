@@ -186,10 +186,6 @@ void mostrarProveedorDeterminadoYProductos(eProveedor prov[],eProducto prod[], i
 
 
 
-
-
-
-
 int buscarProd(eProducto prod[],int tam, int id)
 {
     int i;
@@ -410,6 +406,8 @@ void informar(eProducto prod[],int tamProd)
 
     int salir = 0;
     float contadorImporte = 0;
+
+    int contadorStock = 0;
     float promedio = 0;
     int cantMax=0;
     int cantMin=0;
@@ -426,13 +424,17 @@ void informar(eProducto prod[],int tamProd)
             {
                 if(prod[i].isEmpty==0)
                 {
-                    contadorImporte=contadorImporte+prod[i].importe;
-                    promedio = contadorImporte/(float)prod[i].stock;
+
+                    contadorStock = contadorStock + prod[i].stock;
+                    contadorImporte = prod[i].importe + contadorImporte;
+
+
+
                 }
 
             }
 
-            // promedio = contadorImporte/(float)tamProd;
+            promedio = contadorImporte/(float)contadorStock;
             for(i=0; i<tamProd; i++)
             {
                 if(prod[i].importe>promedio && prod[i].isEmpty==0)
@@ -445,7 +447,7 @@ void informar(eProducto prod[],int tamProd)
                 }
             }
 
-            printf("Total de importes: $ %.2f\n",contadorImporte);
+           printf("Total de importes: $ %.2f\n",contadorImporte);
             printf("Promedio: %.2f, cant productos que superan el promedio: %d\n ",promedio,cantMax);
             system("pause");
             break;
@@ -491,35 +493,41 @@ void informar(eProducto prod[],int tamProd)
 
 
 }
-void listarProdCantMenorADiez(eProducto prod[],int tam)
+void listarProdCantMenorADiez(eProducto prod[],int tamProd, eProveedor prov[], int tamProv)
 {
-    int i;
-    printf("ID Prod\t\tNombre\t\tPrecio\t\tStock\n");
-    for(i= 0; i<tam; i++)
+    int i,j;
+    printf("ID Prod\tProveedor\tNombre\tPrecio\tStock\n");
+    for(i=0; i<tamProd; i++)
     {
-        if( prod[i].stock >0 && prod[i].stock <= 10 && prod[i].isEmpty == 0)
+        for(j=0; j<tamProv; j++)
         {
-            printf("%d\t\t%s\t\t%.2f\t\t%d\n",prod[i].idProd,prod[i].descripcion,prod[i].importe,prod[i].stock);
+            if(prod[i].idProveedor == prov[j].idProveedor && prod[i].stock >0 && prod[i].stock <= 10 && prod[i].isEmpty == 0 && prov[j].isEmpty == 0)
+            {
+                printf("%d\t%s\t%s\t%.2f\t%d\n",prod[i].idProd,prov[j].descripcion,prod[i].descripcion,prod[i].importe,prod[i].stock);
+            }
         }
     }
-
 
 }
 
 
 
 
-void listarProdCantMayorADiez(eProducto prod[],int tam)
+void listarProdCantMayorADiez(eProducto prod[],int tamProd, eProveedor prov[], int tamProv)
 {
-    int i;
-    printf("ID Prod\t\tNombre\t\tPrecio\t\tStock\n");
-    for(i= 0; i<tam; i++)
+    int i,j;
+    printf("ID Prod\tProveedor\tNombre\tPrecio\tStock\n");
+    for(i=0; i<tamProd; i++)
     {
-        if( prod[i].stock >10 && prod[i].isEmpty == 0)
+        for(j=0; j<tamProv; j++)
         {
-            printf("%d\t\t%s\t\t%.2f\t\t%d\n",prod[i].idProd,prod[i].descripcion,prod[i].importe,prod[i].stock);
+            if(prod[i].idProveedor == prov[j].idProveedor && prod[i].stock >10 && prod[i].isEmpty == 0 && prov[j].isEmpty == 0)
+            {
+                printf("%d\t%s\t%s\t%.2f\t%d\n",prod[i].idProd,prov[j].descripcion,prod[i].descripcion,prod[i].importe,prod[i].stock);
+            }
         }
     }
+
 
 
 }
@@ -557,6 +565,7 @@ void listar(eProducto prod[],int tamProd, eProveedor prov[], int tamProv)
     int salir = 0;
     int i,j;
     float contadorImporte = 0;
+    int contadorStock=0;
     float promedio = 0;
 
     do
@@ -569,12 +578,13 @@ void listar(eProducto prod[],int tamProd, eProveedor prov[], int tamProv)
 
             break;
         case 2:
-            listarProdCantMenorADiez(prod,tamProd);
+
+            listarProdCantMenorADiez(prod,tamProd,prov,tamProv);
             system("pause");
 
             break;
         case 3:
-            listarProdCantMayorADiez(prod,tamProd);
+            listarProdCantMayorADiez(prod,tamProd,prov,tamProv);
             system("pause");
             break;
         case 4:
@@ -584,10 +594,11 @@ void listar(eProducto prod[],int tamProd, eProveedor prov[], int tamProv)
                 if(prod[i].isEmpty==0)
                 {
                     contadorImporte=contadorImporte+prod[i].importe;
+                    contadorStock = contadorStock+prod[i].stock;
                 }
 
             }
-            promedio = contadorImporte/(float)tamProd;
+            promedio = contadorImporte/contadorStock;
 
             system("cls");
             printf("Productos que superan el promedio de importe\n");
@@ -612,6 +623,7 @@ void listar(eProducto prod[],int tamProd, eProveedor prov[], int tamProv)
                 if(prod[i].isEmpty==0)
                 {
                     contadorImporte=contadorImporte+prod[i].importe;
+
                 }
 
             }

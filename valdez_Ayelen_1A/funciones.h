@@ -20,6 +20,7 @@ typedef struct
     int idProveedor;
     int stock;
     int isEmpty;
+    float totalImporte;
 
 
 } eProducto;
@@ -101,14 +102,14 @@ void cantProdConStockMenorADiez(eProducto prod[], int tam);
  * \param prod el array se pasa por parametro
  * \param tam tamanio del array
 */
+void listarProdCantMayorADiez(eProducto prod[],int tamProd, eProveedor prov[], int tamProv);
 
-void listarProdCantMayorADiez(eProducto prod[],int tam);
 /** Muestra los productos con stock menor a 10
  *
  * \param prod el array se pasa por parametro
  * \param tam tamanio del array
 */
-void listarProdCantMenorADiez(eProducto prod[],int tam);
+void listarProdCantMenorADiez(eProducto prod[],int tamProd, eProveedor prov[], int tamProv);
 
 
 
